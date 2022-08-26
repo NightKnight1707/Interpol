@@ -1,8 +1,13 @@
-import {Body, Controller, Get, Post, UploadedFile, UseInterceptors} from "@nestjs/common";
-import {FileInterceptor} from "@nestjs/platform-express";
+import {Controller, Get, Res} from "@nestjs/common";
+import {Response} from "express";
+import * as path from "path";
 
 
-@Controller('/')
+@Controller('')
 export class AppController{
-
+    @Get('/')
+    getPortfolios(@Res() res: Response){
+        const filePath = path.resolve(__dirname,'..','src/views',`index.html`)
+        res.sendFile(filePath)
+    }
 }
